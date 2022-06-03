@@ -2,10 +2,10 @@
 // On replit I notice that it prints the question as you 
 // type the prompt message. I hope this wont lead to me being
 // penalized in any way
-// Saving to cookies is not implemented
-// I saw in the slack channel it was changed and made not mandatory
 
+// Import the js-cookies which helps store the session in cookies
 import Cookies from 'js-cookie';
+
 function start() {
   let name = prompt('Hello, what is your name?');
   Cookies.set('UserName', name)
