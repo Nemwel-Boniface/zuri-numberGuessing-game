@@ -5,8 +5,10 @@
 // Saving to cookies is not implemented
 // I saw in the slack channel it was changed and made not mandatory
 
+import Cookies from 'js-cookie';
 function start() {
-  let name = prompt('Hello, what is your name?')
+  let name = prompt('Hello, what is your name?');
+  Cookies.set('UserName', name)
   let welcome = prompt(`Welcome ${name} to my guessing game. Would you wish to play a game?`);
 if(welcome === 'yes') {
   play(name, 2, 0);
@@ -24,7 +26,8 @@ function play(name, inc = 2, points = 0) {
     console.log('congratulations!');
     play(name, inc + 1, points + 1);
   } else {
-    console.log(`Sorry ${name} that was wrong. \nCorrect number was ${guess}. \nYour total points earned were ${points}`);
+    console.log(`Game over ${name}. \nThe Correct number was ${guess}. \nYour total points earned were ${points}`);
+    Cookies.set(name, points)
     let choice = prompt('Would you like to try the game again?');
     if(choice == 'yes') {
       start();
